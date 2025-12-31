@@ -22,8 +22,10 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
+            position: relative;
         }
 
+        /* Ornamen Melayang */
         .ornament {
             position: absolute;
             z-index: 0;
@@ -47,21 +49,30 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             max-width: 350px;
             width: 85%;
+            transition: 0.5s;
+        }
+
+        .icon-svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
         }
 
         input {
             padding: 12px;
-            width: 80%;
+            width: 85%;
             border: 3px solid var(--accent-color);
             border-radius: 20px;
             outline: none;
             text-align: center;
             font-family: 'Fredoka', sans-serif;
             margin-bottom: 10px;
+            color: var(--dark-blue);
+            font-size: 1rem;
         }
 
         button {
-            padding: 10px 30px;
+            padding: 10px 35px;
             background-color: #64b5f6;
             color: white;
             border: none;
@@ -69,29 +80,32 @@
             cursor: pointer;
             font-weight: 600;
             font-family: 'Fredoka', sans-serif;
+            box-shadow: 0 4px 0 #42a5f5;
+            transition: 0.2s;
         }
+
+        button:active { transform: translateY(4px); box-shadow: none; }
 
         #slide-dua { display: none; }
 
-        /* Icon Style */
-        .icon-svg {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 15px;
-        }
+        h1 { font-size: 1.5rem; margin-bottom: 20px; line-height: 1.3; }
+        p { margin: 5px 0; }
     </style>
 </head>
 <body>
 
     <div class="ornament" style="top:10%; left:10%; font-size:40px;">🧸</div>
+    <div class="ornament" style="top:20%; right:15%; font-size:30px;">❄️</div>
+    <div class="ornament" style="bottom:15%; left:10%; font-size:45px;">☁️</div>
     <div class="ornament" style="bottom:10%; right:10%; font-size:40px;">🧸</div>
 
     <div id="slide-satu" class="container">
-        <svg class="icon-svg" viewBox="0 0 24 24" fill="#90caf9"><path d="M12,2C14.76,2 17,4.24 17,7C17,7.55 16.91,8.08 16.75,8.58C18.66,9.11 20,10.9 20,13C20,15.76 17.76,18 15,18C14.45,18 13.92,17.91 13.42,17.75C12.89,19.66 11.1,21 9,21C6.24,21 4,18.76 4,16C4,15.45 4.09,14.92 4.25,14.42C2.34,13.89 1,12.1 1,10C1,7.24 3.24,5 6,5C6.55,5 7.08,5.09 7.58,5.25C8.11,3.34 9.9,2 12,2Z"/></svg>
-        
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="#90caf9">
+            <path d="M12,2C14.76,2 17,4.24 17,7C17,7.55 16.91,8.08 16.75,8.58C18.66,9.11 20,10.9 20,13C20,15.76 17.76,18 15,18C14.45,18 13.92,17.91 13.42,17.75C12.89,19.66 11.1,21 9,21C6.24,21 4,18.76 4,16C4,15.45 4.09,14.92 4.25,14.42C2.34,13.89 1,12.1 1,10C1,7.24 3.24,5 6,5C6.55,5 7.08,5.09 7.58,5.25C8.11,3.34 9.9,2 12,2Z"/>
+        </svg>
         <h1>Happy new year love, what's the passcode?</h1>
         <input type="password" id="passInput" placeholder="Ketik di sini...">
-        <div id="error-msg" style="display:none; color:red; font-size:12px; margin-bottom:10px;">ur password is wrong love, try againnn!</div>
+        <div id="error-msg" style="display:none; color:#ff8a80; font-size:13px; margin-bottom:10px; font-weight:600;">ur password is wrong love, try againnn! ❌</div>
         <button onclick="check()">Unlock 💙</button>
     </div>
 
@@ -99,9 +113,9 @@
         <svg class="icon-svg" viewBox="0 0 24 24" fill="#42a5f5">
             <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.41,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.59,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"/>
         </svg>
-        <h1>Yay! New Year in! 💙</h1>
-        <p>Happy New Year 2026!</p>
-        <p>I love you so much!</p>
+        <h1>Yay u guessed it, happy new year gilliii!</h1>
+        <p style="font-size: 1.2rem; font-weight: 600;">Happy New Year 2026!</p>
+        <p>I love you so much! 🧸💙</p>
     </div>
 
     <script>
@@ -112,8 +126,14 @@
                 document.getElementById('slide-dua').style.display = 'block';
             } else {
                 document.getElementById('error-msg').style.display = 'block';
+                document.getElementById('passInput').style.borderColor = '#ff8a80';
             }
         }
+
+        // Support Enter Key
+        document.getElementById('passInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') { check(); }
+        });
     </script>
 </body>
 </html>
