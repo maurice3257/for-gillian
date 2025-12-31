@@ -19,13 +19,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             margin: 0;
             overflow: hidden;
             position: relative;
         }
 
-        /* Ornamen Melayang Lebih Ramai */
+        /* Ornamen Melayang di Background */
         .ornament {
             position: absolute;
             z-index: 0;
@@ -36,65 +36,80 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(-10deg); }
-            50% { transform: translateY(-30px) rotate(10deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
         }
 
+        /* Kotak Utama Putih */
         .container {
             position: relative;
             z-index: 10;
             text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
+            background: white;
+            padding: 40px 25px;
             border-radius: 40px;
-            border: 5px solid var(--accent-color);
+            border: 6px solid var(--accent-color);
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            max-width: 400px;
+            max-width: 360px;
             width: 85%;
-            margin: 20px;
         }
 
-        .icon-svg {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 10px;
+        /* Ikon Teddy Bear di Tengah Atas (Slide 1) */
+        .main-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: block;
         }
 
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            line-height: 1.3;
+            font-weight: 600;
+        }
+
+        /* Input Password Sesuai Gambar */
         input {
-            padding: 12px;
+            padding: 15px;
             width: 85%;
             border: 3px solid var(--accent-color);
-            border-radius: 20px;
+            border-radius: 25px;
             outline: none;
             text-align: center;
             font-family: 'Fredoka', sans-serif;
-            margin-bottom: 15px;
-            color: var(--dark-blue);
             font-size: 1rem;
+            color: var(--dark-blue);
+            background: #f9fdff;
+            margin-bottom: 10px;
         }
 
+        /* Tombol Unlock Biru */
         button {
-            padding: 12px 35px;
+            margin-top: 15px;
+            padding: 12px 45px;
             background-color: #64b5f6;
             color: white;
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            font-weight: 600;
+            font-size: 1.1rem;
             font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
             box-shadow: 0 4px 0 #42a5f5;
             transition: 0.2s;
         }
 
-        button:active { transform: translateY(4px); box-shadow: none; }
-
-        #slide-dua { 
-            display: none; 
-            max-height: 85vh; 
-            overflow-y: auto; 
+        button:active {
+            transform: translateY(4px);
+            box-shadow: none;
         }
 
-        h1 { font-size: 1.4rem; margin-bottom: 15px; line-height: 1.3; }
-        
+        #slide-dua {
+            display: none;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        /* Gaya Kotak Pesan di Slide 2 */
         .message-box {
             text-align: left;
             font-size: 0.95rem;
@@ -108,37 +123,34 @@
             border: 1px solid var(--accent-color);
         }
 
-        /* Hilangkan scrollbar tapi tetap bisa scroll */
-        #slide-dua::-webkit-scrollbar { width: 0px; }
+        #error-msg {
+            color: #ff8a80;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            font-weight: 600;
+            display: none;
+        }
     </style>
 </head>
 <body>
 
-    <div class="ornament" style="top:5%; left:5%; font-size:45px;">🧸</div>
-    <div class="ornament" style="top:15%; right:8%; font-size:35px;">☁️</div>
-    <div class="ornament" style="top:40%; left:2%; font-size:25px;">✨</div>
-    <div class="ornament" style="top:50%; right:5%; font-size:30px;">🫧</div>
-    <div class="ornament" style="bottom:15%; left:10%; font-size:40px;">🧸</div>
-    <div class="ornament" style="bottom:20%; right:12%; font-size:35px;">❄️</div>
-    <div class="ornament" style="bottom:5%; left:40%; font-size:30px;">☁️</div>
-    <div class="ornament" style="top:25%; left:20%; font-size:20px;">❄️</div>
+    <div class="ornament" style="top:8%; left:8%; font-size:40px;">🧸</div>
+    <div class="ornament" style="top:20%; right:10%; font-size:35px;">☁️</div>
+    <div class="ornament" style="bottom:15%; left:5%; font-size:40px;">🧸</div>
+    <div class="ornament" style="bottom:10%; right:8%; font-size:35px;">❄️</div>
+    <div class="ornament" style="top:45%; left:3%; font-size:25px;">✨</div>
 
     <div id="slide-satu" class="container">
-        <svg class="icon-svg" viewBox="0 0 24 24" fill="#90caf9">
-            <path d="M12,2C14.76,2 17,4.24 17,7C17,7.55 16.91,8.08 16.75,8.58C18.66,9.11 20,10.9 20,13C20,15.76 17.76,18 15,18C14.45,18 13.92,17.91 13.42,17.75C12.89,19.66 11.1,21 9,21C6.24,21 4,18.76 4,16C4,15.45 4.09,14.92 4.25,14.42C2.34,13.89 1,12.1 1,10C1,7.24 3.24,5 6,5C6.55,5 7.08,5.09 7.58,5.25C8.11,3.34 9.9,2 12,2Z"/>
-        </svg>
+        <span class="main-icon">🧸</span>
         <h1>Happy new year love, what's the passcode?</h1>
         <input type="password" id="passInput" placeholder="Ketik di sini...">
-        <div id="error-msg" style="display:none; color:#ff8a80; font-size:13px; margin-bottom:10px; font-weight:600;">ur password is wrong love, try againnn! ❌</div>
+        <div id="error-msg">ur password is wrong love, try againnn! ❌</div>
         <button onclick="check()">Unlock 💙</button>
     </div>
 
     <div id="slide-dua" class="container">
-        <svg class="icon-svg" viewBox="0 0 24 24" fill="#42a5f5">
-            <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.41,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.59,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"/>
-        </svg>
+        <span class="main-icon" style="font-size: 60px;">💙</span>
         <h1>Yay u guessed it, happy new year gilliii!</h1>
-        
         <div class="message-box">
             happy new yearrrrr gilliiii! 
             i am the luckiest guy on earth yang bisa ngenal u sekarang de keknya. 2025 maybe sudah over yaaa, banyak skali roller coaster yang uda kita hadepin, but somehow, all of us made it into a new 2026 year. one of the most special thing that happened in 2025 is meeting you in my life. u are one of a kind si gilli, u cewe yang berbeda dari semua orang yang uda w kenal. u are talented, u are kind, u are strong, u are brave, dan masihh banyakk lagii. thankyouuu for all the love, all the care, all the sleepcalls, all the laughter, all the jokes, all the tears, that we both have passed together. maybe my message for u in this new year engga gituuu panjangg begimanaaa, tapii satu hall, hoping that kita bakal selalu bareng” no matter what happen yaaa gillii. 4-5 months itu masih permulaan la ya buat orang baru kenalan, sooo cheers to more years with you, and always with youu yaaaaaaw🥹
@@ -153,6 +165,7 @@
     <script>
         function check() {
             const val = document.getElementById('passInput').value;
+            // Password yang kamu tentukan
             if(val === "maurisgilli") {
                 document.getElementById('slide-satu').style.display = 'none';
                 document.getElementById('slide-dua').style.display = 'block';
@@ -161,6 +174,8 @@
                 document.getElementById('passInput').style.borderColor = '#ff8a80';
             }
         }
+
+        // Fungsi Enter Key
         document.getElementById('passInput').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') { check(); }
         });
