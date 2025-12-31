@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year Love 🧸💙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #e1f5fe;
+            --card-color: #ffffff;
+            --accent-color: #b3e5fc;
+            --text-color: #4fc3f7;
+            --dark-blue: #0288d1;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--dark-blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Dekorasi Melayang (Teddy & Ornamen) */
+        .ornament {
+            position: absolute;
+            user-select: none;
+            z-index: 0;
+            opacity: 0.6;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-25px) rotate(5deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 40px;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 15px 35px rgba(179, 229, 252, 0.4);
+            max-width: 380px;
+            width: 85%;
+        }
+
+        h1 { font-size: 1.6rem; margin-bottom: 25px; line-height: 1.4; }
+        
+        input {
+            padding: 15px;
+            width: 80%;
+            border: 3px solid var(--accent-color);
+            border-radius: 25px;
+            outline: none;
+            text-align: center;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            color: var(--dark-blue);
+            background: #f9ffff;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: var(--dark-blue); }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 35px;
+            background-color: #81d4fa;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 5px 0 #4fc3f7;
+        }
+
+        button:hover { background-color: #4fc3f7; transform: translateY(-2px); }
+        button:active { transform: translateY(3px); box-shadow: none; }
+
+        #error-msg {
+            color: #ff8a80;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            display: none;
+            font-weight: 600;
+        }
+
+        #slide-dua { display: none; }
+
+        .icon-header { width: 110px; margin-bottom: 15px; }
+
+        .fade-in { animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+    <div class="ornament" style="top: 5%; left: 10%; font-size: 50px;">🧸</div>
+    <div class="ornament" style="top: 15%; right: 10%; font-size: 40px;">☁️</div>
+    <div class="ornament" style="bottom: 10%; left: 5%; font-size: 45px;">❄️</div>
+    <div class="ornament" style="bottom: 15%; right: 8%; font-size: 55px;">🧸</div>
+    <div class="ornament" style="top: 45%; left: 2%; font-size: 30px;">✨</div>
+    <div class="ornament" style="top: 50%; right: 2%; font-size: 30px;">🫧</div>
+
+    <div id="slide-satu" class="container fade-in">
+        <img src="https://img.icons8.com/fluency/150/teddy-bear.png" class="icon-header" alt="teddy">
+        <h1>Happy new year love, what's the passcode?</h1>
+        <input type="password" id="passInput" placeholder="Ketik passwordnya...">
+        <div id="error-msg">ur password is wrong love, try againnn! ❌</div>
+        <br>
+        <button onclick="checkPassword()">Unlock 💙</button>
+    </div>
+
+    <div id="slide-dua" class="container fade-in">
+        <img src="https://img.icons8.com/fluency/150/blue-heart.png" class="icon-header" alt="heart">
+        <h1>Yay! New Year in! 💙</h1>
+        <p style="font-size: 1.2rem;">Happy New Year 2026!</p>
+        <p>I'm so lucky to have you. Semoga tahun ini kita makin bahagia ya! 🧸✨</p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const pass = document.getElementById('passInput').value;
+            const correctPass = "maurisgilli"; // Password sudah diganti
+            const errorMsg = document.getElementById('error-msg');
+            const slide1 = document.getElementById('slide-satu');
+            const slide2 = document.getElementById('slide-dua');
+
+            if (pass === correctPass) {
+                slide1.style.display = 'none';
+                slide2.style.display = 'block';
+            } else {
+                errorMsg.style.display = 'block';
+                // Efek goyang dikit kalau salah
+                const inputField = document.getElementById('passInput');
+                inputField.style.borderColor = '#ff8a80';
+                inputField.classList.add('shake');
+                setTimeout(() => inputField.classList.remove('shake'), 500);
+            }
+        }
+    </script>
+</body>
+</html>
